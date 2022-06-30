@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end-development-acg-front-end
+  namespace: development
+  labels:
+    app: acg-front-end
+    chart: acg-front-end-0.1.0
+    heritage: Helm
+    release: front-end-development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: acg-front-end
+      release: front-end-development	  
+  template:
+    metadata:
+      labels:
+        app: acg-front-end
+        release: front-end-development
+    spec:
+      volumes:
+      - name: front-end-development-acg-front-end-config-file
+        secret:
+          secretName: front-end-development-acg-front-end-config-file
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: acg-front-end
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html/assets/json/config.json
+          name: front-end-development-acg-front-end-config-file
+          subPath: config.json
+		resources: {}
