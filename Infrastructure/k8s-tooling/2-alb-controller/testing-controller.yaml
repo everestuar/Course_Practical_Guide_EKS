@@ -36,4 +36,3 @@ spec:
         - mountPath: /usr/share/nginx/html/assets/json/config.json
           name: front-end-development-acg-front-end-config-file
           subPath: config.json
-		resources: {}
