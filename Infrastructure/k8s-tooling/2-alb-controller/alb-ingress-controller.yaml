@@ -100,7 +100,7 @@ spec:
             # Name of your cluster. Used when naming resources created
             # by the ALB Ingress Controller, providing distinction between
             # clusters.
-            - --cluster-name=eks-acg
+            - --cluster-name=myekscluster
 
             # AWS VPC ID this ingress controller will use to create AWS resources.
             # If unspecified, it will be discovered from ec2metadata.
@@ -130,5 +130,5 @@ spec:
             #- name: AWS_SECRET_ACCESS_KEY
             #  value: SECRETVALUE
           # Repository location of the ALB Ingress Controller.
-          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.6
+          image: docker.io/amazon/aws-alb-ingress-controller:v2.3.1
       serviceAccountName: alb-ingress-controller
